@@ -1,8 +1,9 @@
-package com.example.foodqueen.data.repository
+package com.example.foodqueen.data.repository.item.datasourceimpl
 
 import com.example.foodqueen.data.model.Item
+import com.example.foodqueen.data.repository.item.datasource.ItemCacheDataSource
 
-class ItemCacheDataSourceImpl :ItemCacheDataSource {
+class ItemCacheDataSourceImpl : ItemCacheDataSource {
     private var itemsList = ArrayList<Item>()
     override suspend fun getItemsFromCache(): List<Item> {
         return itemsList

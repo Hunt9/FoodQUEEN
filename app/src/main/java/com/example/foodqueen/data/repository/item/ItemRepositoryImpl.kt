@@ -1,14 +1,16 @@
-package com.example.foodqueen.data.repository
+package com.example.foodqueen.data.repository.item
 
 import android.util.Log
 import com.example.foodqueen.data.model.Item
 import com.example.foodqueen.data.model.ItemsList
+import com.example.foodqueen.data.repository.item.datasource.ItemCacheDataSource
+import com.example.foodqueen.data.repository.item.datasource.ItemRemoteDataSource
 import com.example.foodqueen.domain.repository.ItemRepository
 import retrofit2.Response
 import java.lang.Exception
 
 class ItemRepositoryImpl (
-    private val itemRemoteDataSource:ItemRemoteDataSource,
+    private val itemRemoteDataSource: ItemRemoteDataSource,
     private val itemCacheDataSource: ItemCacheDataSource
 ): ItemRepository {
     override suspend fun getItems(): List<Item>? {
