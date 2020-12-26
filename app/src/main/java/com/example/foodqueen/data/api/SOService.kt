@@ -16,7 +16,7 @@ interface SOService {
     suspend fun getCartItemList(@Query("mobile_id")mobile_id:String):Response<Cart>
 
     @GET("/Cards/addtocard.php")
-    suspend fun updateCart(@Query("item_id")item_id:String,
+    suspend fun updateCart(@Query("item_id")item_id:Int,
                             @Query("mobile_id")mobile_id:String,
                             @Query("price")price:Double,
                             @Query("quantity")quantity:Int,
