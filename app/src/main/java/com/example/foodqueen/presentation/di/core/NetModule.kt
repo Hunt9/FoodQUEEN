@@ -1,4 +1,4 @@
-package com.example.foodqueen.presentation.di
+package com.example.foodqueen.presentation.di.core
 
 import com.example.foodqueen.data.api.SOService
 import dagger.Module

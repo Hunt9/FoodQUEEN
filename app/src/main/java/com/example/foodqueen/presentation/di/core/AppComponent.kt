@@ -1,4 +1,4 @@
-package com.example.foodqueen.presentation.di
+package com.example.foodqueen.presentation.di.core
 
 import dagger.Component
 import javax.inject.Singleton

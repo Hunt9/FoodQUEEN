@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.foodqueen.HomeFragment"
+        android:name="com.example.foodqueen.viewpager.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
 
