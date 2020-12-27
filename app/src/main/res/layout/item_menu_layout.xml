@@ -68,9 +68,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="23dp"
-            android:background="@color/black"
             android:layout_weight="1"
-            android:backgroundTint="@color/black"
+            app:cardBackgroundColor="@color/black"
             >
 
             <TextView
@@ -86,6 +85,7 @@
                 android:layout_margin="10dp"
                 android:textStyle="bold"
                 />
+
 
         </androidx.cardview.widget.CardView>
 

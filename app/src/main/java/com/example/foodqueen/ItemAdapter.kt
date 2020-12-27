@@ -1,12 +1,20 @@
 package com.example.foodqueen
 
+import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.graphics.Color.green
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.foodqueen.data.model.Item
 import com.example.foodqueen.databinding.ItemMenuLayoutBinding
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.ArrayList
 
 class ItemAdapter :RecyclerView.Adapter<MyViewHolder>() {
@@ -47,6 +55,17 @@ class MyViewHolder(val binding: ItemMenuLayoutBinding):RecyclerView.ViewHolder(b
 
         Glide.with(binding.ItemImage.context).load(item.image).into(binding.ItemImage)
 
+        binding.CardView.setOnClickListener{
+
+            binding.CardView.setCardBackgroundColor( ContextCompat.getColor(itemView.context, R.color.green))
+            GlobalScope.launch {
+
+                binding.ItemPrice.text = "+1 added"
+                delay(1000)
+                binding.CardView.setCardBackgroundColor(Color.BLACK)
+                binding.ItemPrice.text = item.priceKG
+            }
+        }
 
     }
 
