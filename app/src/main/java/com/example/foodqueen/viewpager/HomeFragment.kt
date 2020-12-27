@@ -8,6 +8,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.foodqueen.R
 import com.example.foodqueen.databinding.FragmentHomeBinding
+import com.example.foodqueen.viewpager.screens.DrinksFragment
+import com.example.foodqueen.viewpager.screens.PizzaFragment
+import com.example.foodqueen.viewpager.screens.SushiFragment
 import com.synnapps.carouselview.ImageListener
 
 
@@ -26,9 +29,6 @@ class HomeFragment : Fragment() {
     var imageListener =
         ImageListener { position, imageView -> imageView.setImageResource(slideImages.get(position)) }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +39,17 @@ class HomeFragment : Fragment() {
 
         binding.carouselView.pageCount = slideImages.size
         binding.carouselView.setImageListener(imageListener)
+
+        val fragmentList = arrayListOf<Fragment>(
+                PizzaFragment(),
+                SushiFragment(),
+                DrinksFragment()
+        )
+
+        val adapter = ViewPagerAdapter(fragmentList,requireActivity().supportFragmentManager,lifecycle)
+
+        binding.viewpager.adapter = adapter
+
 
         return binding.root
     }

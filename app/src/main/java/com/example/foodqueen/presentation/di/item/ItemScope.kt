@@ -1,7 +1,7 @@
-package com.example.foodqueen.presentation.di.cart
+package com.example.foodqueen.presentation.di.item
 
 import javax.inject.Scope
 
 @Scope
 @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
-annotation class CartScope
+annotation class ItemScope

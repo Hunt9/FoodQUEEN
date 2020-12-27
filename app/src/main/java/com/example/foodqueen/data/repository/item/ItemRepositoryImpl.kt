@@ -13,25 +13,28 @@ class ItemRepositoryImpl (
     private val itemRemoteDataSource: ItemRemoteDataSource,
     private val itemCacheDataSource: ItemCacheDataSource
 ): ItemRepository {
-    override suspend fun getItems(): List<Item>? {
+    override suspend fun getItems(): List<Item> {
         return getItemsFromCache()
     }
 
     suspend fun getItemsFromAPI():List<Item>
     {
         lateinit var itemsList: List<Item>
+
+        itemsList = emptyList()
+
         try{
             val response : Response<ItemsList> = itemRemoteDataSource.getItems()
-            val body:ItemsList? = response.body()
+            val body:ItemsList = response.body()!!
 
-            if(body!=null && body.statusMessage.equals("Successfull"))
+            if(body.statusMessage.equals("Successfull."))
             {
                 itemsList = body.items
             }
 
         }catch (exception:Exception)
         {
-            Log.i("MyTag",exception.message.toString())
+            Log.i("MyTag----",exception.message.toString())
         }
 
         return itemsList

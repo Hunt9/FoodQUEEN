@@ -1,5 +1,7 @@
 package com.example.foodqueen.presentation.di.core
 
+import com.example.foodqueen.presentation.di.cart.CartSubComponent
+import com.example.foodqueen.presentation.di.item.ItemSubComponent
 import dagger.Component
 import javax.inject.Singleton
 
@@ -15,5 +17,8 @@ import javax.inject.Singleton
     ]
 )
 interface AppComponent {
+
+    fun cartSubComponent():CartSubComponent.Factory
+    fun itemSubComponent():ItemSubComponent.Factory
 
 }
