@@ -11,34 +11,38 @@ import com.example.foodqueen.databinding.FragmentHomeBinding
 import com.example.foodqueen.viewpager.screens.DrinksFragment
 import com.example.foodqueen.viewpager.screens.PizzaFragment
 import com.example.foodqueen.viewpager.screens.SushiFragment
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.synnapps.carouselview.ImageListener
-
-
-
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
 
     var slideImages = intArrayOf(
-        R.drawable.slideone,
-        R.drawable.slidetwo,
-        R.drawable.slidethree,
+            R.drawable.slideone,
+            R.drawable.slidetwo,
+            R.drawable.slidethree,
     )
+
+    private val titles = arrayOf("Movies", "Events", "Tickets")
 
     var imageListener =
         ImageListener { position, imageView -> imageView.setImageResource(slideImages.get(position)) }
 
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
-        binding.carouselView.pageCount = slideImages.size
-        binding.carouselView.setImageListener(imageListener)
+        GlobalScope.launch {
+            binding.carouselView.pageCount = slideImages.size
+            binding.carouselView.setImageListener(imageListener)}
 
         val fragmentList = arrayListOf<Fragment>(
                 PizzaFragment(),
@@ -46,9 +50,16 @@ class HomeFragment : Fragment() {
                 DrinksFragment()
         )
 
-        val adapter = ViewPagerAdapter(fragmentList,requireActivity().supportFragmentManager,lifecycle)
+
+        val adapter = ViewPagerAdapter(fragmentList, requireActivity().supportFragmentManager, lifecycle)
 
         binding.viewpager.adapter = adapter
+
+
+
+        TabLayoutMediator(binding.tabs, binding.viewpager)
+        { tab: TabLayout.Tab, position: Int -> tab.setText(titles.get(position))
+        }.attach()
 
 
         return binding.root

@@ -11,6 +11,8 @@ import androidx.fragment.app.FragmentFactory
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.foodqueen.ItemAdapter
 import com.example.foodqueen.R
 import com.example.foodqueen.databinding.FragmentPizzaBinding
 import com.example.foodqueen.presentation.di.Injector
@@ -23,8 +25,8 @@ class PizzaFragment : Fragment() {
     @Inject
     lateinit var factory: ItemViewModelFactory
     private lateinit var itemViewModel: ItemViewModel
-
     private lateinit var binding: FragmentPizzaBinding
+    private lateinit var adapter: ItemAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,10 +37,8 @@ class PizzaFragment : Fragment() {
         (activity?.application as Injector).createPizzaComponent().inject(this)
 
         itemViewModel = ViewModelProvider(this,factory).get(ItemViewModel::class.java)
-        val responseLiveData = itemViewModel.getItems()
-        responseLiveData.observe(viewLifecycleOwner, Observer {
-            Log.i("MYTAG-PIZZA",it.toString() )
-        })
+
+        initRecyclerView()
 
 
 
@@ -46,6 +46,26 @@ class PizzaFragment : Fragment() {
 
 
     }
+
+    private fun initRecyclerView(){
+        binding.PizzaList.layoutManager = LinearLayoutManager(activity)
+        adapter = ItemAdapter()
+        binding.PizzaList.adapter = adapter
+        showItem()
+
+    }
+
+    private fun showItem(){
+        val responseLiveData = itemViewModel.getItems()
+        responseLiveData.observe(viewLifecycleOwner, Observer {
+            if(it!=null)
+            {
+                adapter.setList(it)
+                adapter.notifyDataSetChanged()
+            }
+        })
+    }
+
 
 
 

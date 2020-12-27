@@ -80,6 +80,9 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
 
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
+
 
     implementation "com.synnapps:carouselview:0.1.5"
 
