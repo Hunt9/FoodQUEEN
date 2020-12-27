@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
             R.drawable.slidethree,
     )
 
-    private val titles = arrayOf("Movies", "Events", "Tickets")
+    private val titles = arrayOf("Pizza", "Sushi", "Drink")
 
     var imageListener =
         ImageListener { position, imageView -> imageView.setImageResource(slideImages.get(position)) }

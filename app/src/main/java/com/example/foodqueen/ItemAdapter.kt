@@ -47,6 +47,7 @@ class MyViewHolder(val binding: ItemMenuLayoutBinding):RecyclerView.ViewHolder(b
 
         Glide.with(binding.ItemImage.context).load(item.image).into(binding.ItemImage)
 
+
     }
 
 }
