@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foodqueen.ItemAdapter
 import com.example.foodqueen.R
 import com.example.foodqueen.databinding.FragmentPizzaBinding
+import com.example.foodqueen.presentation.cart.CartViewModel
+import com.example.foodqueen.presentation.cart.CartViewModelFactory
 import com.example.foodqueen.presentation.di.Injector
 import com.example.foodqueen.presentation.item.ItemViewModel
 import com.example.foodqueen.presentation.item.ItemViewModelFactory
@@ -24,7 +26,10 @@ class PizzaFragment : Fragment() {
 
     @Inject
     lateinit var factory: ItemViewModelFactory
+//    @Inject
+//    lateinit var factory1: CartViewModelFactory
     private lateinit var itemViewModel: ItemViewModel
+//    private lateinit var cartViewModel: CartViewModel
     private lateinit var binding: FragmentPizzaBinding
     private lateinit var adapter: ItemAdapter
     override fun onCreateView(
@@ -39,6 +44,18 @@ class PizzaFragment : Fragment() {
         itemViewModel = ViewModelProvider(this,factory).get(ItemViewModel::class.java)
 
         initRecyclerView()
+
+
+//        (activity?.application as Injector).createCartSubComponent().inject(this)
+//
+//        cartViewModel = ViewModelProvider(this,factory1).get(CartViewModel::class.java)
+//
+//        val responseLiveData = cartViewModel.updateCart()
+//        responseLiveData.observe(viewLifecycleOwner, Observer {
+//            if (it != null) {
+//                Log.i("DEKHO",it.toString())
+//            }
+//        })
 
 
 

@@ -6,25 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.fragment.findNavController
-import com.example.foodqueen.databinding.FragmentCartBinding
 import com.example.foodqueen.databinding.FragmentInfoBinding
+import com.example.foodqueen.databinding.FragmentSushiBinding
 
-class CartFragment : Fragment() {
+class InfoFragment : Fragment() {
 
-    private lateinit var binding: FragmentCartBinding
-
+    private lateinit var binding: FragmentInfoBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_cart, container, false)
-
-        binding.textView.setOnClickListener{
-            this.findNavController().navigate(R.id.action_cartFragment_to_homeFragment)
-
-        }
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_info, container, false)
 
         return binding.root
     }

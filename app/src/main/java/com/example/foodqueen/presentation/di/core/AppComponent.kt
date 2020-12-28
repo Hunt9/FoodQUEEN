@@ -12,6 +12,7 @@ import javax.inject.Singleton
         CacheDataModule::class,
         NetModule::class,
         RemoteDataModule::class,
+        RemoteDataModuleForCart::class,
         RepositoryModule::class,
         UseCaseModule::class
     ]

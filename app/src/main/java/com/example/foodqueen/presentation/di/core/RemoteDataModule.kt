@@ -2,6 +2,7 @@ package com.example.foodqueen.presentation.di.core
 
 import com.example.foodqueen.data.api.SOService
 import com.example.foodqueen.data.repository.cart.datasource.CartRemoteDataSource
+import com.example.foodqueen.data.repository.cart.datasourceimpl.AddToCartDataSourceImpl
 import com.example.foodqueen.data.repository.cart.datasourceimpl.CartRemoteDataSourceImpl
 import com.example.foodqueen.data.repository.item.datasource.ItemRemoteDataSource
 import com.example.foodqueen.data.repository.item.datasourceimpl.ItemRemoteDataSourceImpl

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.foodqueen.R
 import com.example.foodqueen.databinding.FragmentHomeBinding
 import com.example.foodqueen.viewpager.screens.DrinksFragment
@@ -60,6 +61,12 @@ class HomeFragment : Fragment() {
         TabLayoutMediator(binding.tabs, binding.viewpager)
         { tab: TabLayout.Tab, position: Int -> tab.setText(titles.get(position))
         }.attach()
+
+        binding.fab.setOnClickListener{
+
+            this.findNavController().navigate(R.id.action_homeFragment_to_cartFragment)
+
+        }
 
 
         return binding.root
